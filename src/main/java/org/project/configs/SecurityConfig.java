@@ -10,10 +10,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-
+// 북따옴엔 없음
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-    return http.build();
+    return http.build(); // 추후 설정 결정
     }
 
     @Bean
