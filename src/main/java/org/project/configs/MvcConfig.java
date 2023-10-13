@@ -23,10 +23,9 @@ public class MvcConfig implements WebMvcConfigurer {
     //사이트 설정유지 인터셉터
     //@RequiredArgsConstructor로 인해 주입됨
     //SiteCofigInterceptordptj @Component 넣어줘야함
-    private final SiteConfigInterceptors siteConfigInterceptor;
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        WebMvcConfigurer.super.addViewControllers(registry);
     registry.addViewController("/")
             .setViewName("main/index");
             // 템플릿을 만들기 위해 임시로 설정
@@ -39,15 +38,9 @@ public class MvcConfig implements WebMvcConfigurer {
     // 파일들의 URL등을 설정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        WebMvcConfigurer.super.addResourceHandlers(registry);
     registry.addResourceHandler("/uploads/**")
-            .addResourceLocations("file:///"+fileUploadPath);
+            .addResourceLocations("file:///" + fileUploadPath);
     // 경로 설정
     }
 
-    @Override    // 기본설정도 볼수있게??
-    public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(siteConfigInterceptor)
-            .addPathPatterns("/**");//모든 URL에 해당할수 있게
-    }
 }
