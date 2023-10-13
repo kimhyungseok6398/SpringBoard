@@ -18,7 +18,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
-        return w->w.ignoring().requestMatchers("/css/**", "/js/**","/images/**","/error/**");
+        return w -> w.ignoring().requestMatchers("/css/**", "/js/**","/images/**","/error/**");
         // 정적경로 설정 상관없이 접근 가능하게 설정
         // 레이아웃 설정후 해제 예정
     }
