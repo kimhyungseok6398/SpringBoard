@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.project.configs.Interceptors.SiteConfigInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 // 오버라이드 설정
 @Configuration
 @RequiredArgsConstructor // 인터셉터를 주입받기위해
+@EnableJpaAuditing // map을 알아서 프록시에 포함
 public class MvcConfig implements WebMvcConfigurer {
     // 스프링 빈으로 등록된 객체에서 properties파일이나
     // 환경변수등의 값을 주입받을때 사용

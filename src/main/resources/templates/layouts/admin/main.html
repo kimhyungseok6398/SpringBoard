@@ -17,7 +17,8 @@
             th:src="@{/js/admin/{jsFile}.js?v={v}(jsFile=${jsFile}, v=${cssJsVersion})}"></script>
     <th:block layout:fragment="addScript"></th:block>
 </head>
-<body>
+<body><!-- class를 넣어서 각 페이지 별로 다르게 표현 생성준비준-->
+
 <!-- 공통으로 사용되는 부분 방식-->
 <header th:replace="~{outlines/admin/header::common}"></header>
 <!--main은 바뀔수 있기에 사용-->
