@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
+    <!--있을때만 값이 나오게끔-->
+    <!--버전부분 추가 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/style.css?v={v}(v=${cssJsVersion})}">
+    <link rel="stylesheet" type="text/css" th:each="file : ${addCss}" th:href="@{/css/admin/{cssFile}.css?v={v}(cssFile=${file}, v=${cssJsVersion})}">
+    <th:block layout:fragment="addCss"></th:block>
+    <!--작업자는 캐싱이 되어 보여지는데 사용자는 보이지 않을수 있기에 버전 사용-->
+    <!-- 전역에 공통으로 씌울수 있겠끔-->
+    <script th:src="@{/js/admin/common.js?v={v}(v=${cssJsVersion})}"></script>
+    <script th:each="jsFile : ${addScript}"
+            th:src="@{/js/admin/{jsFile}.js?v={v}(jsFile=${jsFile}, v=${cssJsVersion})}"></script>
+    <th:block layout:fragment="addScript"></th:block>
+</head>
+<body>
+<!-- 공통으로 사용되는 부분 방식-->
+<header th:replace="~{outlines/admin/header::common}"></header>
+<!--main은 바뀔수 있기에 사용-->
+<main layout:fragment="content"></main>
+<footer th:replace="~{outlines/admin/footer::common}"></footer>
+<iframe name="ifrmProcess" class="dn"></iframe>
+</body>
+
+</html>
